@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { css } from 'emotion';
 import styled from '@emotion/styled';
 import TaskList from './TaskList';
+import AppInput from './AppInput';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class App extends React.Component {
     };
   };
 
-  hundleChange({ target: { value } }) {
+  hundleChange({ value }) {
     this.setState({ value: value });
   };
 
@@ -68,11 +69,11 @@ export default class App extends React.Component {
           </div>
           <form onSubmit={(e) => {this.hundleBtnClick(e)}}>
             <div>
-              <input
-                type="text"
+              <AppInput
+                name="addTask"
                 value={this.state.value}
-                onChange={e => this.hundleChange(e)}
                 placeholder="タスクを追加"
+                onChange={e => this.hundleChange(e)}
               />
               <button>追加</button>
               {this.renderStatusMessage()}
